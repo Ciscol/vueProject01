@@ -20,7 +20,8 @@ module.exports = {
       // 1、limit是转化base64的图片大小限制
       // 2、name是文件名，默认是hush值.[ext]，通过这样的参数设置可以变成原来的文件名
       //   并且，文件名前的8位hash值可以避免同名文件（即使是在不同的文件夹里）的覆盖
-      { test: /\.(jpg|png|gif|bmp|jpeg)$/, loader: ['url-loader?limit=10000&name=[hash:8]-[name].[ext]'] },
+      // { test: /\.(jpg|png|gif|bmp|jpeg)$/, loader: ['url-loader?limit=10000&name=[hash:8]-[name].[ext]'] },
+      { test: /\.(jpg|png|gif|bmp|jpeg)$/, loader: ['url-loader'] },
       // 3、字体文件
       { test: /\.(ttf|eot|svg|woff|woff2)$/, loader: 'url-loader' },
       // 4、babel
