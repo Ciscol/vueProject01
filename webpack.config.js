@@ -16,6 +16,7 @@ module.exports = {
   module: {
     rules: [
       { test: /\.css$/, loader: ['style-loader', 'css-loader'] },  // css loader ，顺序很重要
+      { test: /\.scss$/, loader: ['style-loader', 'css-loader', 'sass-loader'] }, // 配置 处理 scss 文件的规则
       // 关于图片loader，
       // 1、limit是转化base64的图片大小限制
       // 2、name是文件名，默认是hush值.[ext]，通过这样的参数设置可以变成原来的文件名

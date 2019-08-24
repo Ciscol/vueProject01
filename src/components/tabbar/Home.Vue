@@ -18,10 +18,10 @@
         v-for="(item, index) in mediaList"
         :key="index"
       >
-        <a :href="item.url">
+        <router-link :to="item.route">
           <img class="mediaList-img" :src="item.image" alt="">
           <div class="mui-media-body" v-text="item.name"></div>
-        </a>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -30,25 +30,24 @@
 <script>
 import { Toast } from "mint-ui";
 
-const addr = "http://www.liulongbin.top:3005";
 
 export default {
   data() {
     return {
       lunboList: [],
       mediaList: [
-        { id: 1, name: "新闻资讯", image: require("../../images/menu1.png"), url: "#" },
-        { id: 2, name: "图片分享", image: require("../../images/menu2.png"), url: "#" },
-        { id: 3, name: "商品购买", image: require("../../images/menu3.png"), url: "#" },
-        { id: 4, name: "留言反馈", image: require("../../images/menu4.png"), url: "#" },
-        { id: 5, name: "视频专区", image: require("../../images/menu5.png"), url: "#" },
-        { id: 6, name: "联系我们", image: require("../../images/menu6.png"), url: "#" }
+        { id: 1, name: "新闻资讯", image: require("../../images/menu1.png"), route: "/home/newsList" },
+        { id: 2, name: "图片分享", image: require("../../images/menu2.png"), route: "/home/photoList" },
+        { id: 3, name: "商品购买", image: require("../../images/menu3.png"), route: "/home/newsList" },
+        { id: 4, name: "留言反馈", image: require("../../images/menu4.png"), route: "/home/newsList" },
+        { id: 5, name: "视频专区", image: require("../../images/menu5.png"), route: "/home/newsList" },
+        { id: 6, name: "联系我们", image: require("../../images/menu6.png"), route: "/home/newsList" }
       ]
     };
   },
   methods: {
     getLunbotu() {
-      this.$http.get(addr + "/api/getlunbo").then(result => {
+      this.$http.get("api/getlunbo").then(result => {
         if (result.body.status === 0) {
           this.lunboList = result.body.message;
         } else {
