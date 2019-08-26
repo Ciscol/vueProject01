@@ -34,7 +34,7 @@ export default {
     getComments() {
       this.pageIndex++;
       this.$http
-        .get("api/getcomments/" + this.id + "?pageindex=" + this.pageIndex)
+        .get(this.getUrl + this.id + "?pageindex=" + this.pageIndex)
         .then(result => {
           if (result.body.status === 0) {
             this.commentList = [].concat(this.commentList, result.body.message);
@@ -50,27 +50,28 @@ export default {
       }
 
       this.$http
-        .post("api/postcomment/" + this.id, {
+        .post(this.postUrl + this.id, {
           content: this.commentContent.trim()
         })
         .then(result => {
           if (result.body.status === 0) {
-            Toast("发表评论成功");
+            Toast("评论成功");
             var cmt = {
               user_name: "匿名用户",
               add_time: Date.now(),
               content: this.commentContent.trim()
             };
 
-            this.commentList.unshift(cmt)
+            this.commentList.unshift(cmt);
             this.commentList.pop();
+            this.commentContent = "";
           } else {
             Toast("ERROR：发表评论失败");
           }
         });
     }
   },
-  props: ["id"],
+  props: ["id", "postUrl", "getUrl"],
   created() {
     this.getComments();
   }

@@ -1,16 +1,6 @@
 <template>
   <div class="home">
-    <div class="lunbo">
-      <mt-swipe :auto="5000">
-        <mt-swipe-item v-for="(item, index) in lunboList" :key="index">
-          <!-- <a href=""> -->
-          <a :href="item.url" target="blank">
-            <img class="lunbo-item-pic" :src="item.img" alt />
-          </a>
-          <!-- </a> -->
-        </mt-swipe-item>
-      </mt-swipe>
-    </div>
+    <swiper-box :swiperList="swiperList" :srcName="'img'"></swiper-box>
 
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li
@@ -29,16 +19,16 @@
 
 <script>
 import { Toast } from "mint-ui";
-
+import SwiperBox from '../subcomponents/Swiper.vue';
 
 export default {
   data() {
     return {
-      lunboList: [],
+      swiperList: [],
       mediaList: [
         { id: 1, name: "新闻资讯", image: require("../../images/menu1.png"), route: "/home/newsList" },
         { id: 2, name: "图片分享", image: require("../../images/menu2.png"), route: "/home/photoList" },
-        { id: 3, name: "商品购买", image: require("../../images/menu3.png"), route: "/home/newsList" },
+        { id: 3, name: "商品购买", image: require("../../images/menu3.png"), route: "/home/goodsList" },
         { id: 4, name: "留言反馈", image: require("../../images/menu4.png"), route: "/home/newsList" },
         { id: 5, name: "视频专区", image: require("../../images/menu5.png"), route: "/home/newsList" },
         { id: 6, name: "联系我们", image: require("../../images/menu6.png"), route: "/home/newsList" }
@@ -46,31 +36,27 @@ export default {
     };
   },
   methods: {
-    getLunbotu() {
+    getSwiper() {
       this.$http.get("api/getlunbo").then(result => {
         if (result.body.status === 0) {
-          this.lunboList = result.body.message;
+          this.swiperList = result.body.message;
         } else {
           Toast("ERROR：加载轮播图失败");
         }
       });
     }
   },
+  components:{
+    'swiper-box': SwiperBox
+  },
   created() {
-    this.getLunbotu();
+    this.getSwiper();
   }
 };
 </script>
 
 <style scoped>
-.lunbo {
-  height: 200px;
-}
 
-.lunbo-item-pic {
-  width: 100%;
-  height: 100%;
-}
 
 .mui-grid-view.mui-grid-9 {
   border-top: 1px solid #fff;

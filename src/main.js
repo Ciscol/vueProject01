@@ -7,6 +7,9 @@ import vueResource from 'vue-resource';
 Vue.use(vueResource);
 Vue.http.options.root = "http://www.liulongbin.top:3005";
 Vue.http.options.emulateJSON = true;
+import VuePreview from 'vue-preview';
+Vue.use(VuePreview);
+
 /* mint-UI */
 import 'mint-ui/lib/style.css';
 import { Header, Swipe, SwipeItem, Button, Lazyload } from 'mint-ui';

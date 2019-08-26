@@ -2,5 +2,24 @@ body{
   margin: 0;
   padding: 0;
   border: 0;
-  background-color: #fff;
+}
+
+.my-gallery:after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0
+}
+
+.my-gallery figure {
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 0 0 10px 10px;
+  padding: 0;
+}
+
+.my-gallery figure img {
+  width: 100%;
 }

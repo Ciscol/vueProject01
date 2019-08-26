@@ -14,7 +14,7 @@
     <div class="newsinfo-content" v-html="newsInfo.content">
     </div>
 
-    <comment-box :id="id"></comment-box>
+    <comment-box :id="id" :postUrl="'api/postcomment/'" :getUrl="'api/getcomments/'"></comment-box>
   </div>
 </template>
 
