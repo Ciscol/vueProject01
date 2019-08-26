@@ -71,7 +71,7 @@ export default {
       swiperList: [],
       goodsInfo: {},
       ballShow: false,
-      selectedCount:1
+      selectedCount: 1
     };
   },
   methods: {
@@ -102,15 +102,24 @@ export default {
     },
     addToShoppingCart() {
       this.ballShow = true;
+      var info = {
+        id: this.id,
+        img_url:this.swiperList[0].src,
+        title:this.goodsInfo.title,
+        count: this.selectedCount,
+        price: this.goodsInfo.sell_price,
+        selected: false
+      };
+      this.$store.commit("addToCart", info);
     },
     beforeEnter(el) {
-      el.style.transform = "translate(0,0)"
+      el.style.transform = "translate(0,0)";
     },
     enter(el, done) {
       el.offsetWidth;
 
       const pBall = this.$refs.ball.getBoundingClientRect();
-      const pBadge = document.getElementById('badge').getBoundingClientRect();
+      const pBadge = document.getElementById("badge").getBoundingClientRect();
       const distX = pBadge.left - pBall.left;
       const distY = pBadge.top - pBall.top;
 
@@ -121,7 +130,7 @@ export default {
     afterEnter(el) {
       this.ballShow = false;
     },
-    getSelectedCount(count){
+    getSelectedCount(count) {
       this.selectedCount = count;
     }
   },
