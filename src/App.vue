@@ -1,7 +1,11 @@
 <template>
   <div class="container">
     <!-- header -->
-    <mt-header fixed title="APP"></mt-header>
+    <mt-header fixed title="APP">
+      <span slot="left" @click="goBack" v-show="isHidden">
+        <mt-button icon="back">返回</mt-button>
+      </span>
+    </mt-header>
 
     <!-- nav -->
     <nav class="mui-bar mui-bar-tab">
@@ -40,7 +44,22 @@ export default {
   data() {
     return {};
   },
-  methods: {}
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    }
+  },
+  computed: {
+    isHidden() {
+      var path = this.$route.path;
+      return !(
+        path === "/home" ||
+        path === "/member" ||
+        path === "/shopcart" ||
+        path === "/search"
+      )
+    }
+  }
 };
 </script>
 
@@ -58,7 +77,7 @@ export default {
   z-index: 99;
 }
 
-.mui-bar mui-bar-tab{
+.mui-bar mui-bar-tab {
   z-index: 99;
 }
 

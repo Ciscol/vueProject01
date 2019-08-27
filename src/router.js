@@ -15,7 +15,7 @@ import GoodsCommentComponent from './components/goods/GoodsComment.vue';
 
 const router = new VueRouter({
   routes: [
-    { path: '/', component: HomeComponent },
+    { path: '/', redirect: '/home' },
     { path: '/home', component: HomeComponent},
     { path: '/member', component: MemberComponent},
     { path: '/shopCart', component: ShopCartComponent},
@@ -25,7 +25,7 @@ const router = new VueRouter({
     { path: '/home/photoList', component: PhotoListComponent },
     { path: '/home/photoInfo/:id', component: PhotoInfoComponent },
     { path: '/home/goodsList', component: GoodsListComponent },
-    { path: '/home/goodsInfo/:id', component: GoodsInfoComponent },
+    { path: '/home/goodsInfo/:id', component: GoodsInfoComponent, name:'goodsInfo' },
     { path: '/home/goodsDesc/:id', component: GoodsDescComponent , name:'goodsDesc'},
     { path: '/home/goodsComment/:id', component: GoodsCommentComponent , name:'goodsComment'},
   ],

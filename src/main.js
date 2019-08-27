@@ -50,6 +50,42 @@ const store = new Vuex.Store({
         state.cart.push(goods);
       }
       localStorage.setItem('cart', JSON.stringify(state.cart));
+    },
+    updateToCart(state, goods) {
+      state.cart.some(item => {
+        if (item.id === goods.id) {
+          if (!goods.count || goods.count<1) {
+            item.count = 1;
+          }
+          else if (goods.count > item.max) {
+            item.count = item.max;
+          }
+          else {
+            item.count = goods.count;
+          }
+          return true;
+        }
+      })
+      localStorage.setItem('cart', JSON.stringify(state.cart));
+    },
+    deleteToCart(state, id) {
+      console.log('进来啦' + id);
+      state.cart.some((item, index, arr) => {
+        if (item.id === id) {
+          arr.splice(index, 1);
+          return true;
+        }
+      })
+      localStorage.setItem('cart', JSON.stringify(state.cart));
+    },
+    switchSelection(state, id) {
+      state.cart.some(item => {
+        if (item.id === id) {
+          item.selected = !item.selected;
+          return true;
+        }
+      })
+      localStorage.setItem('cart', JSON.stringify(state.cart));
     }
   },
   getters: {
@@ -59,7 +95,24 @@ const store = new Vuex.Store({
         sum += item.count;
       })
       return sum;
-    }
+    },
+    selectionList(state) {
+      var o = {};
+      state.cart.forEach(item => {
+        o[item.id] = item.selected;
+      })
+      return o;
+    },
+    selectedCount(state) {
+      var o = { count: 0, amount: 0 };
+      state.cart.forEach(item => {
+        if (item.selected === true) {
+          o.count += item.count;
+          o.amount += item.count * item.price;
+        }
+      })
+      return o;
+    },
   }
 })
 

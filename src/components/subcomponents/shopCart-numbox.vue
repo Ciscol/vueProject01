@@ -5,7 +5,7 @@
       id="test"
       class="mui-input-numbox"
       type="number"
-      value="1"
+      :value="initCount"
       @change="postCount"
       ref="selectedCount"
     />
@@ -24,18 +24,24 @@ export default {
   },
   mounted() {
     mui(".mui-numbox").numbox();
-    console.log("before set " + this.max);
+    mui(".mui-numbox")
+      .numbox()
+      .setOption("max", this.max);
+  },
+  updated() {
     mui(".mui-numbox")
       .numbox()
       .setOption("max", this.max);
   },
   methods: {
     postCount() {
-      // this.$emit("getCount", parseInt(this.$refs.selectedCount.value));
-      // this.$store.commit("addToCart", info);
+      this.$store.commit("updateToCart", {
+        id: this.id,
+        count: parseInt(this.$refs.selectedCount.value)
+      });
     }
   },
-  props: ["max", "id"],
+  props: ["max", "id", "initCount"],
   watch: {
     max: function(newval, oldval) {
       console.log("watch " + newval);
