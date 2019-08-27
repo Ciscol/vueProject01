@@ -11,8 +11,7 @@
         <span v-cloak>{{newsInfo.click}}次</span>
       </div>
     </div>
-    <div class="newsinfo-content" v-html="newsInfo.content">
-    </div>
+    <div class="newsinfo-content" v-html="newsInfo.content"></div>
 
     <comment-box :id="id" :postUrl="'api/postcomment/'" :getUrl="'api/getcomments/'"></comment-box>
   </div>
@@ -20,7 +19,7 @@
 
 <script>
 import { Toast } from "mint-ui";
-import CommentBox from '../subcomponents/Comment.vue';
+import CommentBox from "../subcomponents/Comment.vue";
 
 export default {
   data() {
@@ -41,8 +40,8 @@ export default {
       });
     }
   },
-  components:{
-    'comment-box':CommentBox
+  components: {
+    "comment-box": CommentBox
   },
   created() {
     this.getNewsInfo();

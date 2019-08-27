@@ -9,7 +9,7 @@
         :key="index"
       >
         <router-link :to="item.route">
-          <img class="mediaList-img" :src="item.image" alt="">
+          <img class="mediaList-img" :src="item.image" alt />
           <div class="mui-media-body" v-text="item.name"></div>
         </router-link>
       </li>
@@ -19,19 +19,49 @@
 
 <script>
 import { Toast } from "mint-ui";
-import SwiperBox from '../subcomponents/Swiper.vue';
+import SwiperBox from "../subcomponents/Swiper.vue";
 
 export default {
   data() {
     return {
       swiperList: [],
       mediaList: [
-        { id: 1, name: "新闻资讯", image: require("../../images/menu1.png"), route: "/home/newsList" },
-        { id: 2, name: "图片分享", image: require("../../images/menu2.png"), route: "/home/photoList" },
-        { id: 3, name: "商品购买", image: require("../../images/menu3.png"), route: "/home/goodsList" },
-        { id: 4, name: "留言反馈", image: require("../../images/menu4.png"), route: "/home/newsList" },
-        { id: 5, name: "视频专区", image: require("../../images/menu5.png"), route: "/home/newsList" },
-        { id: 6, name: "联系我们", image: require("../../images/menu6.png"), route: "/home/newsList" }
+        {
+          id: 1,
+          name: "新闻资讯",
+          image: require("../../images/menu1.png"),
+          route: "/home/newsList"
+        },
+        {
+          id: 2,
+          name: "图片分享",
+          image: require("../../images/menu2.png"),
+          route: "/home/photoList"
+        },
+        {
+          id: 3,
+          name: "商品购买",
+          image: require("../../images/menu3.png"),
+          route: "/home/goodsList"
+        },
+        {
+          id: 4,
+          name: "留言反馈",
+          image: require("../../images/menu4.png"),
+          route: "/home/newsList"
+        },
+        {
+          id: 5,
+          name: "视频专区",
+          image: require("../../images/menu5.png"),
+          route: "/home/newsList"
+        },
+        {
+          id: 6,
+          name: "联系我们",
+          image: require("../../images/menu6.png"),
+          route: "/home/newsList"
+        }
       ]
     };
   },
@@ -46,8 +76,8 @@ export default {
       });
     }
   },
-  components:{
-    'swiper-box': SwiperBox
+  components: {
+    "swiper-box": SwiperBox
   },
   created() {
     this.getSwiper();
@@ -56,8 +86,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .mui-grid-view.mui-grid-9 {
   border-top: 1px solid #fff;
   border-left: 1px solid #fff;
@@ -74,7 +102,7 @@ export default {
   height: 60px;
 }
 
-.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{
+.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
   font-size: 13px;
 }
 </style>

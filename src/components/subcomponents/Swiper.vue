@@ -3,7 +3,7 @@
     <mt-swipe :auto="5000">
       <mt-swipe-item v-for="(item, index) in swiperList" :key="index">
         <!-- <a :href="item.url" target="blank"> -->
-          <img class="swiper-item-pic" :src="item[srcName]" alt />
+        <img class="swiper-item-pic" :src="item[srcName]" alt />
         <!-- </a> -->
       </mt-swipe-item>
     </mt-swipe>
@@ -12,12 +12,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      
-    }
-  },
-  props:['swiperList', 'srcName']
+  props: ["swiperList", "srcName"]
 };
 </script>
 

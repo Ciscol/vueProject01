@@ -1,6 +1,11 @@
 <template>
   <div class="goods-list">
-    <div class="goods-item" v-for="(item, index) in goodsList" :key="index" @click="goDetails(item.id)">
+    <div
+      class="goods-item"
+      v-for="(item, index) in goodsList"
+      :key="index"
+      @click="goDetails(item.id)"
+    >
       <div class="goods-img">
         <img v-lazy="item.img_url" />
       </div>
@@ -48,8 +53,8 @@ export default {
           }
         });
     },
-    goDetails(id){
-      this.$router.push('/home/goodsInfo/' + id);
+    goDetails(id) {
+      this.$router.push("/home/goodsInfo/" + id);
     }
   },
   created() {

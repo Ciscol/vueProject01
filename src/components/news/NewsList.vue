@@ -64,7 +64,7 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.mui-media-object.mui-pull-left.mui-media-box{
+.mui-media-object.mui-pull-left.mui-media-box {
   width: 42px;
   height: 42px;
   margin-right: 10px;

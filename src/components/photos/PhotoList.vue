@@ -22,7 +22,12 @@
 
     <div class="photo-list">
       <ul>
-        <router-link v-for="(item, index) in images" :key="index" :to="'/home/photoInfo/' + item.id" tag="li">
+        <router-link
+          v-for="(item, index) in images"
+          :key="index"
+          :to="'/home/photoInfo/' + item.id"
+          tag="li"
+        >
           <img v-lazy="item.img_url" />
           <div class="img-info">
             <h3 class="img-info-title" v-text="item.title"></h3>
@@ -36,7 +41,7 @@
 
 <script>
 import mui from "../../lib/mui/js/mui.js";
-import {Toast} from 'mint-ui'
+import { Toast } from "mint-ui";
 
 export default {
   data() {
@@ -88,7 +93,7 @@ export default {
   touch-action: pan-y;
 }
 
-img{
+img {
   display: block !important;
 }
 

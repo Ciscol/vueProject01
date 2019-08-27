@@ -57,7 +57,7 @@ export default {
         path === "/member" ||
         path === "/shopcart" ||
         path === "/search"
-      )
+      );
     }
   }
 };

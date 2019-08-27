@@ -36,7 +36,3 @@ export default {
   props: ["id", "getUrl"]
 };
 </script> 
-
-<style lang="scss" scoped>
-
-</style>
