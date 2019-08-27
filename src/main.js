@@ -14,11 +14,12 @@ Vue.use(Vuex);
 
 /* mint-UI */
 import 'mint-ui/lib/style.css';
-import { Header, Swipe, SwipeItem, Button, Lazyload } from 'mint-ui';
+import { Header, Swipe, SwipeItem, Button, Switch, Lazyload } from 'mint-ui';
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Button.name, Button);
+Vue.component(Switch.name, Switch);
 Vue.use(Lazyload);
 
 /* MUI */
@@ -53,7 +54,6 @@ const store = new Vuex.Store({
   },
   getters: {
     shoppingTotal(state) {
-      console.log(state.cart);
       var sum = 0;
       state.cart.forEach(item => {
         sum += item.count;

@@ -104,11 +104,12 @@ export default {
       this.ballShow = true;
       var info = {
         id: this.id,
-        img_url:this.swiperList[0].src,
-        title:this.goodsInfo.title,
+        img_url: this.swiperList[0].src,
+        title: this.goodsInfo.title,
         count: this.selectedCount,
         price: this.goodsInfo.sell_price,
-        selected: false
+        selected: false,
+        max: this.goodsInfo.stock_quantity
       };
       this.$store.commit("addToCart", info);
     },
